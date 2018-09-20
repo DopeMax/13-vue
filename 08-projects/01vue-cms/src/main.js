@@ -6,10 +6,20 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 //安装路由
 Vue.use(VueRouter)
+
+import moment from 'moment'
+//定义全局的过滤器
+Vue.filter('dateFormat',function(dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
+   return moment(dataStr).format(pattern)
+})
+
 //导入vue-resource
 import VueResource from 'vue-resource'
 //安装
 Vue.use(VueResource)
+//设置请求的根路径
+Vue.http.options.root = 'https://www.apiopen.top';
+
 //导入MUI的样式
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
@@ -18,13 +28,14 @@ import './lib/mui/css/icons-extra.css'
 import {
     Header,
     Swipe,
-    SwipeItem
+    SwipeItem,
+    Button
 } from 'mint-ui';
 
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
-
+Vue.component(Button.name, Button);
 
 
 //导入自己的router.js模块

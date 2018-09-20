@@ -2,7 +2,9 @@
 	<div class="app-container">
 		<!-- 顶部 Header区域-->
 		<mt-header fixed title="黑马程序员-vue项目">
-			
+			 <router-link to="/home" slot="left">
+				<mt-button icon="back">返回</mt-button>
+			</router-link>
 		</mt-header>
 		<!-- 中间的路由router-view区域 -->
 		<transition>
@@ -39,13 +41,18 @@
 <style lang="scss" scoped>
 .app-container {
   padding-top: 40px;
+	padding-bottom: 50px;
   overflow-x: hidden;
 }
 
-.v-enter,
-.v-leave-to {
+.v-enter {
   opacity: 0;
   transform: translateX(100%);
+}
+.v-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+  position: absolute;
 }
 .v-enter-active,
 .v-leave-to-active {
